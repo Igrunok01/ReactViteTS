@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
+    "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "vitest",
     "dev": "vite",
@@ -28,7 +29,6 @@
     "@vitejs/plugin-react": "^4.4.1",
     "eslint": "^9.25.0",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.5.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "gh-pages": "^6.3.0",
