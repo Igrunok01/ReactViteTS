@@ -16,6 +16,18 @@ export function useCart() {
     });
   };
 
+  const getItemQuantity = (id: number): number => {
+    const item = cart.find((i) => i.id === id);
+    return item ? item.quantity : 0;
+  };
+
+  const setItemQuantity = (id: number, quantity: number) => {
+    setCart((prev) => {
+      if (quantity <= 0) return prev.filter((i) => i.id !== id);
+      return prev.map((i) => (i.id === id ? { ...i, quantity } : i));
+    });
+  };
+
   const count = cart.reduce((s, i) => s + i.quantity, 0);
   const total = cart.reduce((s, i) => s + i.quantity * i.price, 0);
 
@@ -41,5 +53,14 @@ export function useCart() {
       return prev;
     });
 
-  return { cart, addToCart, count, total, inc, dec };
+  return {
+    cart,
+    addToCart,
+    count,
+    total,
+    inc,
+    dec,
+    getItemQuantity,
+    setItemQuantity,
+  };
 }

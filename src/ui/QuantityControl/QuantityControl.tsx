@@ -11,7 +11,7 @@ type Props = {
   onDec?: () => void;
 };
 
-export default function QtyControl({
+export default function QuantityControl({
   value,
   min = 1,
   readOnly = false,

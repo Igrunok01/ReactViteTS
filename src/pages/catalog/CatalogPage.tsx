@@ -16,7 +16,8 @@ import { useProducts } from '../../modules/products';
 
 export default function App() {
   const { products, loading, error } = useProducts();
-  const { cart, addToCart, count, total, inc, dec } = useCart();
+  const { cart, addToCart, count, total, inc, dec, getItemQuantity, setItemQuantity } =
+    useCart();
   return (
     <AppShell header={{ height: 64 }} padding="md">
       <AppShell.Header withBorder>
@@ -33,7 +34,12 @@ export default function App() {
               <Text fw={600}>{count} товаров</Text>
               <Text c="dimmed">${total}</Text>
 
-              <CartPopup cart={cart} onInc={inc} onDec={dec} total={total}>
+              <CartPopup
+                cart={cart}
+                onInc={inc}
+                onDec={dec}
+                total={total}
+              >
                 <Button
                   color="brand"
                   leftSection={<IconShoppingCart size={16} />}
@@ -67,6 +73,8 @@ export default function App() {
                   key={p.id}
                   {...p}
                   addToCart={(qty) => addToCart(p, qty)}
+                  getItemQuantity={getItemQuantity}
+                  setItemQuantity={setItemQuantity}
                 />
               ))}
             </SimpleGrid>
